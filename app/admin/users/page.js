@@ -4,10 +4,12 @@ import Sidebar from '@/app/components/ui/Sidebar';
 import { Col, Container, Row} from 'react-bootstrap';
 import UsersList from "@/app/admin/users/UsersList";
 import AuthWrapper from '@/app/components/auth/Auth';
+import { getBaseUrl } from '@/app/lib/utils';
 
 const getData = async () => {
     try{
-        const response = await fetch('http://localhost:3000/api/users');
+        const baseURL = getBaseUrl();
+        const response = await fetch(`${baseURL}/api/users`);
         if (!response.ok) {
             throw new Error('مشکل در دریافت کاربران');
         }

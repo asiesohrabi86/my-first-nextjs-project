@@ -4,10 +4,12 @@ import Sidebar from '@/app/components/ui/Sidebar';
 import { Col, Container, Row} from 'react-bootstrap';
 import StoreList from "@/app/admin/store/StoreList";
 import AuthWrapper from '@/app/components/auth/Auth';
+import { getBaseUrl } from '@/app/lib/utils';
 
 const getData = async () => {
     try{
-        const response = await fetch('http://localhost:3000/api/products', {
+        const baseURL = getBaseUrl();
+        const response = await fetch(`${baseURL}/api/products`, {
             cache: 'force-cache',
             next: {
                 revalidate: 3600,

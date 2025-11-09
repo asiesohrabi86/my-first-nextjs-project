@@ -4,10 +4,12 @@ import Sidebar from '@/app/components/ui/Sidebar';
 import { Col, Container, Row} from 'react-bootstrap';
 import CommentsLists from './CommentsLists';
 import AuthWrapper from '@/app/components/auth/Auth';
+import { getBaseUrl } from '@/app/lib/utils'; // مسیر را بر اساس ساختار پروژه تنظیم کنید
 
 const getData = async () => {
     try{
-        const response = await fetch('http://localhost:3000/api/comments');
+        const baseURL = getBaseUrl();
+        const response = await fetch(`${baseURL}/api/comments`);
 
         if (!response.ok) {
             throw new Error('مشکل در دریافت نظرات');

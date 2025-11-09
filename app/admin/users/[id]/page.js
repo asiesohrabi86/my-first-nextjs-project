@@ -4,13 +4,15 @@ import Sidebar from '@/app/components/ui/Sidebar';
 import { Col, Container, Row } from 'react-bootstrap';
 import UpdateForm from './UpdateForm';
 import AuthWrapper from '@/app/components/auth/Auth';
+import { getBaseUrl } from '@/app/lib/utils';
 
 const UpdateUser = async ({params}) => {
     const {id} = await params;
    
     const fetchUser = async () => {
         try{
-            const response = await fetch(`http://localhost:3000/api/users/${id}`);
+            const baseURL = getBaseUrl();
+            const response = await fetch(`${baseURL}/api/users/${id}`);
             const data = await response.json();
             return data;
         }catch(error){
