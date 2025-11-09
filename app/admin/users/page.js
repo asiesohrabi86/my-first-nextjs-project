@@ -1,27 +1,42 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Header from '@/app/components/ui/Header';
 import Sidebar from '@/app/components/ui/Sidebar';
 import { Col, Container, Row} from 'react-bootstrap';
 import UsersList from "@/app/admin/users/UsersList";
 import AuthWrapper from '@/app/components/auth/Auth';
-import { getBaseUrl } from '@/app/lib/utils';
+import LoadingSpinner from '@/app/components/ui/LoadingSpinner';
 
-const getData = async () => {
-    try{
-        const baseURL = getBaseUrl();
-        const response = await fetch(`${baseURL}/api/users`);
-        if (!response.ok) {
-            throw new Error('مشکل در دریافت کاربران');
+
+const Users = () => {
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
+    useEffect(() => {
+        const getData = async () => {
+            try{
+                const response = await fetch(`/api/users`);
+                if (!response.ok) {
+                    throw new Error('مشکل در دریافت کاربران');
+                }
+                const data = await response.json();
+                setUsers(data);
+            }catch(error){
+                setError(error.message);
+            }finally{
+                setLoading(false);
+            }  
         }
-        const data = await response.json();
-        return data;
-    }catch(error){
-        throw new Error('مشکل در دریافت کاربران');
-    }  
-}
+        getData();
+    }, []);
 
-const Users = async () => {
-    const users = await getData();
+    if(loading){
+        return <LoadingSpinner/>;
+    }
+
+    if(error){
+        return (<div className="text-danger">{error}</div>);
+    }
     return (
         <AuthWrapper>
             <Container fluid>
