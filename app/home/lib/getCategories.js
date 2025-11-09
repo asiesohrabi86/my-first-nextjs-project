@@ -1,6 +1,7 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getCategories() {
-    
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/categories/home-menu`, {
+    const baseUrl = getBaseUrl();
+    const res = await fetch(`${baseUrl}/api/categories/home-menu`, {
     cache: 'force-cache',
     });  
 

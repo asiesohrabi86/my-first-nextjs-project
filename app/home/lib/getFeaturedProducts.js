@@ -1,5 +1,7 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getFeaturedProducts(){
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/featured`
+    const baseUrl = getBaseUrl();
+    const res = await fetch(`${baseUrl}/api/products/featured`
         , {
             cache: 'force-cache',
         }

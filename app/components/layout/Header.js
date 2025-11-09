@@ -130,12 +130,12 @@ const Header = () => {
                     aria-labelledby="dropdownMenuButton1"
                   >
                     <section>
-                      <a className="dropdown-item" href="my-profile.html">
+                      <a className="dropdown-item" href="/my-profile">
                         <i className="fa fa-user-circle"></i>پروفایل کاربری
                       </a>
                     </section>
                     <section>
-                      <Link className="dropdown-item" href="/my-orders">
+                      <Link className="dropdown-item" href="/my-profile/my-orders">
                         <i className="fa fa-newspaper"></i>سفارشات
                       </Link>
                     </section>

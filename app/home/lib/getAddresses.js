@@ -1,5 +1,7 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getAddresses() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/addresses/home`
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/addresses/home`
     //     , {
     //     cache: 'force-cache',
     //     next:{

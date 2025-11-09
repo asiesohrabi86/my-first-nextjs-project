@@ -1,31 +1,44 @@
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
 import Header from '@/app/components/ui/Header';
 import Sidebar from '@/app/components/ui/Sidebar';
 import { Col, Container, Row} from 'react-bootstrap';
 import CommentsLists from './CommentsLists';
 import AuthWrapper from '@/app/components/auth/Auth';
-import { getBaseUrl } from '@/app/lib/utils'; // مسیر را بر اساس ساختار پروژه تنظیم کنید
 
-const getData = async () => {
-    try{
-        const baseURL = getBaseUrl();
-        const response = await fetch(`${baseURL}/api/comments`);
 
-        if (!response.ok) {
-            throw new Error('مشکل در دریافت نظرات');
+const Comments =  () => {
+    const [comments, setComments] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        // این تابع در مرورگر کاربر اجرا می‌شود
+        const getData = async () => {
+            try{
+                const response = await fetch('/api/comments');
+
+                if (!response.ok) {
+                    throw new Error('مشکل در دریافت نظرات');
+                }
+
+                const data = await response.json();
+                setComments(data);
+            }catch(error){
+                console.log(error);
+                throw new Error('مشکل در دریافت نظرات');
+            } finally {
+                setLoading(false);
+            } 
         }
+        getData();
+    }, []);
 
-        const data = await response.json();
-        return data;
-    }catch(error){
-        console.log(error);
-        throw new Error('مشکل در دریافت نظرات');
-    } 
- 
-}
-
-const Comments = async () => {
-    const comments = await getData();
+    if (loading) {
+        return <div>در حال بارگذاری نظرات...</div>;
+    }
+    if (error) {
+        return <div>خطا: {error}</div>;
+    }
     return (
         <AuthWrapper>
             <Container fluid>

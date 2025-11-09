@@ -49,7 +49,7 @@ const Brands = () => {
 const handleDelete = async (id) => {
     setLoading(true);
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/brands/${id}`, {
+        const response = await fetch(`/api/brands/${id}`, {
             method: 'DELETE'
         });
         if (!response.ok) {

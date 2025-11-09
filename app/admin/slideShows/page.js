@@ -49,7 +49,7 @@ const SlideShows = () => {
 const handleDelete = async (id) => {
     setLoading(true);
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/slideShows/${id}`, {
+        const response = await fetch(`/api/slideShows/${id}`, {
             method: 'DELETE'
         });
         if (!response.ok) {

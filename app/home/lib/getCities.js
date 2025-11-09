@@ -1,5 +1,7 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getCities(province) {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/cities?province=${province}`, {
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/cities?province=${province}`, {
         cache: 'force-cache',
         next:{
             revalidate: 3600,

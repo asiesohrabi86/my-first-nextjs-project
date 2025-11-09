@@ -1,8 +1,9 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getDiscounts() {
     console.log('takhfif');
-
+    const baseURL = getBaseUrl();
     // API call to fetch discounts
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/discount-codes`
+    const response = await fetch(`${baseURL}/api/discount-codes`
     //     ,{
     //     cache: 'force-cache',
     // }

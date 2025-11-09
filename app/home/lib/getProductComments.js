@@ -1,10 +1,12 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getProductComments(id) {
     console.log(id);
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/${id}/comments`
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/products/${id}/comments`
         , {
             cache: 'force-cache',
             next:{
-                revalidate: 3600,
+                revalidate: 60,
             },
         }
     );

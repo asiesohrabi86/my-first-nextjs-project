@@ -1,5 +1,7 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getBrands() {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/brands`, {
+    const baseURL = getBaseUrl();
+    const response = await fetch(`${baseURL}/api/brands`, {
         // cache: 'force-cache',
         // next:{
         //     revalidate: 120,

@@ -1,5 +1,7 @@
+import { getBaseUrl } from "@/app/lib/utils";
 export async function getOrders(status) {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/orders?status=${status}`
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/api/orders?status=${status}`
     //     , {
     //     cache: 'force-cache',
     //     next:{

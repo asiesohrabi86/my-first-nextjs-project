@@ -11,7 +11,7 @@ const RelatedProducts = ({categoryId}) => {
     useEffect(() => {
         const fetchRelatedProducts = async () => {
             try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/home/related?category=${categoryId}`);
+                const res = await fetch(`/api/products/home/related?category=${categoryId}`);
                 if (!res.ok) {
                    throw new Error("خطا در دریافت اطلاعات");   
                 }

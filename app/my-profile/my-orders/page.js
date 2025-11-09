@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
+import LoadingSpinner from '../../components/ui/LoadingSpinner';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { getOrders } from '../home/lib/getOrders';
+import { getOrders } from '../../home/lib/getOrders';
 import { signOut } from 'next-auth/react';
-import AuthWrapper from '../components/auth/Auth';
+import AuthWrapper from '../../components/auth/Auth';
 
 const MyOrder = () => {
     const [orders, setOrders] = useState([]);
@@ -35,15 +35,15 @@ const MyOrder = () => {
             } catch (error) {
                 setError(error);
             } finally {
-                setLoading(true);
+                setLoading(false);
             }
         }
         fetchOrders();
     }, [searchParams]);
 
-    // if (loading) {
-    //     return <LoadingSpinner/>;
-    // }
+    if (loading) {
+        return <LoadingSpinner/>;
+    }
     if (error) {
         return <div>خطا: {error.message}</div>
     }
