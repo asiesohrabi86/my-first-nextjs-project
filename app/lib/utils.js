@@ -1,8 +1,7 @@
-export const getBaseUrl = () => {
-  // اگر در محیط Vercel هستیم، از آدرس Vercel استفاده کن
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-  // در غیر این صورت (محیط توسعه محلی)، از localhost استفاده کن
-  return 'http://localhost:3000';
+export const formatDate = (dateString) => {
+    return new Date(dateString).toLocaleDateString('fa-IR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
 };

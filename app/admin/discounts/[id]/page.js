@@ -1,15 +1,13 @@
 import React from 'react';
 import UpdateForm from './UpdateForm';
 import AuthWrapper from '@/app/components/auth/Auth';
-import { getBaseUrl } from '@/app/lib/utils';
 
 const UpdateDiscount = async ({params}) => {
     const {id} = await params;
    
     const fetchDiscount = async () => {
         try{
-            const baseURL = getBaseUrl();
-            const discountResponse = await fetch(`${baseURL}/api//discount-codes/${id}`);
+            const discountResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/discount-codes/${id}`);
             const data = await discountResponse.json();
             return data;
         }catch(error){

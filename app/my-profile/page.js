@@ -1,15 +1,12 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import LoadingSpinner from '../components/ui/LoadingSpinner';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-// import { getOrders } from '../home/lib/getOrders';
-import { signOut } from 'next-auth/react';
 import AuthWrapper from '../components/auth/Auth';
+import ProfileSidebar from "@/app/my-profile/ProfileSidebar";
 
 const MyProfile = () => {
-    // const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [statusExp, setStatusExp] = useState("");
@@ -53,32 +50,7 @@ const MyProfile = () => {
             <section className="">
                 <section id="main-body-two-col" className="container-xxl body-container">
                     <section className="row">
-                        <aside id="sidebar" className="sidebar col-md-3">
-
-                            <section className="content-wrapper p-3 rounded-2 mb-3">
-                                {/*  start sidebar nav */}
-                                <section className="sidebar-nav">
-                                    <section className="sidebar-nav-item">
-                                        <span className="sidebar-nav-item-title"><Link className="p-3" href="/my-profile/my-orders">سفارش های من</Link></span>
-                                    </section>
-                                    <section className="sidebar-nav-item">
-                                        <span className="sidebar-nav-item-title"><a className="p-3" href="my-addresses.html">آدرس های من</a></span>
-                                    </section>
-                                    <section className="sidebar-nav-item">
-                                        <span className="sidebar-nav-item-title"><a className="p-3" href="my-favorites.html">لیست علاقه مندی</a></span>
-                                    </section>
-                                    <section className="sidebar-nav-item">
-                                        <span className="sidebar-nav-item-title"><a className="p-3" href="/my-profile">ویرایش حساب</a></span>
-                                    </section>
-                                    <section className="sidebar-nav-item">
-                                        <span className="sidebar-nav-item-title"><button className="p-3" onClick={() => signOut()}>خروج از حساب کاربری</button></span>
-                                    </section>
-
-                                </section>
-                                {/* end sidebar nav */}
-                            </section>
-
-                        </aside>
+                        <ProfileSidebar/>
                         <main id="main-body" className="main-body col-md-9">
                             
                         </main>

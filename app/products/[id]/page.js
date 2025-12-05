@@ -5,11 +5,9 @@ import RelatedProducts from '@/app/components/home/RelatedProducts';
 import React from 'react';
 import "../../styles/product.css";
 import AddToCartButton from '@/app/components/home/AddToCartButton';
-import { getBaseUrl } from "@/app/lib/utils";
 
 async function getProductData(id) {
-    const baseUrl = getBaseUrl();
-    const res = await fetch(`${baseUrl}/api/products/home/${id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/products/home/${id}`,{
         cache: 'force-cache',
         next: {
             revalidate: 60

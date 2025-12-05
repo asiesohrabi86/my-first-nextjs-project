@@ -1,11 +1,9 @@
-import { getBaseUrl } from "@/app/lib/utils";
 export async function getSlideShows() {
-    const baseUrl = getBaseUrl();
-    const response = await fetch(`${baseUrl}/api/slideShows`, {
-        // cache: 'force-cache',
-        // next:{
-        //     revalidate: 120,
-        // },
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/slideShows`, {
+        cache: 'force-cache',
+        next:{
+            revalidate: 120,
+        },
     });
 
     if (!response.ok) {

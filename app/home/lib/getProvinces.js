@@ -1,7 +1,5 @@
-import { getBaseUrl } from "@/app/lib/utils";
 export async function getProvinces() {
-    const baseUrl = getBaseUrl();
-    const response = await fetch(`${baseUrl}/api/provinces`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/provinces`, {
         cache: 'force-cache',
         next:{
             revalidate: 3600,
